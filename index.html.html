@@ -1,0 +1,2248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>theframefantasy studios | Luxury Cinematic Films · Pune</title>
+<meta name="description" content="Premium cinematography, video production & creative branding by Pranav Jadhao. Based in Pune, available across India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/*
+  COLOR PSYCHOLOGY APPLIED:
+  ─────────────────────────────────────────
+  #0a0908  Deep warm black — authority, depth, luxury (warm undertone = never cold/clinical)
+  #c9a96e  Muted gold — prestige, warmth, reward. Triggers trust & aspiration
+  #f0ebe2  Warm cream — readable, soft, approachable. Not harsh white = lower eye strain
+  #7ecec4  Soft teal — used ONLY for feedback/trust sections. Psychology: calm, honest, clarity
+  #e8735a  Warm coral — used ONLY for CTAs. Psychology: urgency + warmth (vs red = aggression)
+  
+  USER PSYCHOLOGY:
+  • Clear visual hierarchy guides eye: Logo → Hero → Scroll cue → Sections
+  • Breadcrumb-style nav shows users WHERE they are
+  • Feedback section = social proof (most powerful trust builder)
+  • Gold on dark = reward signal on hover → encourages exploration
+  • Generous spacing = breathing room = reduces bounce rate
+  • Large tap targets on mobile = accessibility + ease
+*/
+
+:root {
+  --black:        #0a0908;
+  --charcoal:     #131110;
+  --dark:         #1c1916;
+  --mid:          #2c2820;
+  --border:       rgba(201,169,110,0.12);
+  --gold:         #c9a96e;
+  --gold-light:   #e8c98a;
+  --gold-muted:   #8a6e45;
+  --gold-glow:    rgba(201,169,110,0.18);
+  --teal:         #7ecec4;
+  --teal-soft:    rgba(126,206,196,0.12);
+  --coral:        #e8735a;   /* warm CTA color, not aggressive red */
+  --coral-soft:   rgba(232,115,90,0.12);
+  --cream:        #f0ebe2;
+  --cream-dim:    rgba(240,235,226,0.6);
+  --cream-faint:  rgba(240,235,226,0.3);
+  --white:        #ffffff;
+  --text-muted:   #7a7570;
+  --text-dim:     #4a4542;
+  --success:      #6abf8a;
+  --t-smooth:     0.55s cubic-bezier(0.25,0.46,0.45,0.94);
+  --t-fast:       0.28s ease;
+  --t-bounce:     0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; font-size:16px; }
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── CUSTOM CURSOR ── */
+#cur, #cur2 { position:fixed; pointer-events:none; z-index:9999; border-radius:50%; }
+#cur  { width:7px; height:7px; background:var(--gold); transform:translate(-50%,-50%); transition:transform .1s; }
+#cur2 { width:34px; height:34px; border:1px solid rgba(201,169,110,0.45); transform:translate(-50%,-50%); transition:all .38s cubic-bezier(0.25,0.46,0.45,0.94); }
+#cur2.big { transform:translate(-50%,-50%) scale(2.6); border-color:var(--gold); background:rgba(201,169,110,0.06); }
+@media(max-width:768px){ #cur,#cur2{display:none;} body{cursor:auto;} }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--gold-muted);border-radius:2px}
+
+/* ── PAGE PROGRESS BAR ── */
+#progress {
+  position:fixed; top:0; left:0; height:2px; z-index:2000;
+  background:linear-gradient(to right,var(--gold-muted),var(--gold),var(--gold-light));
+  width:0%; transition:width .1s linear;
+}
+
+/* ══════════════════════════════
+   NAVIGATION
+══════════════════════════════ */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:24px 60px;
+  transition: all .45s ease;
+}
+nav.scrolled {
+  background:rgba(10,9,8,0.94);
+  backdrop-filter:blur(22px);
+  padding:14px 60px;
+  border-bottom:1px solid var(--border);
+}
+
+/* ── LOGO: matches handwritten script of brand ── */
+.nav-logo {
+  text-decoration:none;
+  display:flex; flex-direction:column; align-items:flex-start;
+  gap:1px;
+}
+.logo-script {
+  font-family:'Dancing Script', cursive;
+  font-weight:600;
+  font-size:1.55rem;
+  color:var(--white);
+  letter-spacing:0.01em;
+  line-height:1;
+}
+.logo-script span { color:var(--gold); }
+.logo-tag {
+  font-size:0.60rem;
+  letter-spacing:0.32em;
+  color:rgba(231, 175, 70, 0.745);
+  text-transform:lowercase;
+  font-family:'Montserrat',sans-serif;
+  font-weight:300;
+  padding-left:2px;
+}
+
+.nav-links { display:flex; gap:40px; list-style:none; align-items:center; }
+.nav-links a {
+  color:var(--cream-dim);
+  text-decoration:none;
+  font-size:0.65rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  transition:color var(--t-fast);
+  position:relative;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-4px; left:0;
+  width:0; height:1px; background:var(--gold);
+  transition:width var(--t-fast);
+}
+.nav-links a:hover { color:var(--gold); }
+.nav-links a:hover::after { width:100%; }
+.nav-cta {
+  background:var(--gold) !important;
+  color:var(--black) !important;
+  padding:10px 26px;
+  font-size:0.62rem !important;
+  letter-spacing:0.22em !important;
+  font-weight:500 !important;
+  transition: all var(--t-fast) !important;
+}
+.nav-cta::after { display:none !important; }
+.nav-cta:hover { background:var(--gold-light) !important; transform:translateY(-1px); box-shadow:0 8px 28px rgba(201,169,110,0.3); }
+
+/* Hamburger */
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:1001; }
+.hamburger span { width:24px; height:1px; background:var(--gold); transition:all .3s ease; display:block; }
+
+/* Mobile menu */
+.mob-menu {
+  position:fixed; inset:0;
+  background:rgba(10,9,8,0.98);
+  z-index:999;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:44px;
+  transform:translateX(100%);
+  transition:transform .5s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.mob-menu.open { transform:translateX(0); }
+.mob-menu a {
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.2rem; font-weight:300;
+  color:var(--white); text-decoration:none;
+  transition:color var(--t-fast);
+}
+.mob-menu a:hover { color:var(--gold); }
+
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+.hero {
+  position:relative; height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.hero-cinematic-bg {
+  position:absolute; inset:0;
+  background:linear-gradient(160deg, #120e09 0%, #0a0908 40%, #0e0c0a 100%);
+  overflow:hidden;
+}
+/* Atmospheric bokeh orbs — simulate cinematic depth of field */
+.hero-cinematic-bg::before {
+  content:'';
+  position:absolute;
+  width:900px; height:900px;
+  top:-200px; left:-300px;
+  background:radial-gradient(ellipse, rgba(201,169,110,0.07) 0%, transparent 65%);
+  animation:float1 12s ease-in-out infinite;
+}
+.hero-cinematic-bg::after {
+  content:'';
+  position:absolute;
+  width:700px; height:700px;
+  bottom:-150px; right:-200px;
+  background:radial-gradient(ellipse, rgba(201,169,110,0.05) 0%, transparent 60%);
+  animation:float2 15s ease-in-out infinite;
+}
+@keyframes float1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(60px,40px) scale(1.08)} }
+@keyframes float2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-40px,-30px) scale(1.1)} }
+
+/* Film grain */
+.grain {
+  position:absolute; inset:0; z-index:2;
+  opacity:0.035; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:256px;
+  animation:grn .35s steps(1) infinite;
+}
+@keyframes grn {
+  0%{transform:translate(0,0)} 20%{transform:translate(-2%,-3%)} 40%{transform:translate(3%,1%)}
+  60%{transform:translate(1%,-2%)} 80%{transform:translate(-3%,3%)} 100%{transform:translate(-1%,-1%)}
+}
+/* Gradient overlay for text legibility — bottom heavy */
+.hero-overlay {
+  position:absolute; inset:0; z-index:3;
+  background:linear-gradient(
+    to bottom,
+    rgba(10,9,8,0.25) 0%,
+    rgba(10,9,8,0.05) 40%,
+    rgba(10,9,8,0.55) 80%,
+    rgba(10,9,8,0.9) 100%
+  );
+}
+.hero-content {
+  position:relative; z-index:4;
+  text-align:center;
+  padding:0 24px;
+  max-width:940px;
+}
+.hero-eyebrow {
+  display:inline-flex; align-items:center; gap:14px;
+  font-size:0.58rem; letter-spacing:0.5em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:36px;
+  opacity:0; animation:fadeUp 1s ease forwards .5s;
+}
+.hero-eyebrow::before,.hero-eyebrow::after {
+  content:''; width:30px; height:1px; background:var(--gold-muted);
+}
+.hero-h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-weight:300;
+  font-size:clamp(2.6rem,5.5vw,5.2rem);
+  line-height:1.1; letter-spacing:0.02em;
+  color:var(--white);
+  margin-bottom:28px;
+  opacity:0; animation:fadeUp 1.2s ease forwards .8s;
+}
+.hero-h1 em { font-style:italic; color:var(--gold); }
+.hero-sub {
+  font-size:0.76rem; letter-spacing:0.14em;
+  color:var(--cream-dim); line-height:1.9;
+  margin-bottom:56px;
+  opacity:0; animation:fadeUp 1.1s ease forwards 1.1s;
+}
+.hero-ctas {
+  display:flex; gap:20px; justify-content:center; flex-wrap:wrap;
+  opacity:0; animation:fadeUp 1.1s ease forwards 1.4s;
+}
+.btn-gold {
+  background:var(--gold); color:var(--black);
+  padding:17px 48px; font-size:0.65rem;
+  letter-spacing:0.3em; text-transform:uppercase;
+  font-family:'Montserrat',sans-serif; font-weight:500;
+  border:none; cursor:pointer; text-decoration:none; display:inline-block;
+  transition:all var(--t-fast);
+  position:relative; overflow:hidden;
+}
+.btn-gold::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to right,transparent,rgba(255,255,255,0.15),transparent);
+  transform:translateX(-100%);
+  transition:transform .5s ease;
+}
+.btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 14px 44px rgba(201,169,110,0.35); }
+.btn-gold:hover::after { transform:translateX(100%); }
+.btn-ghost {
+  background:transparent; color:var(--cream);
+  padding:17px 48px; font-size:0.65rem;
+  letter-spacing:0.3em; text-transform:uppercase;
+  font-family:'Montserrat',sans-serif; font-weight:300;
+  border:1px solid rgba(240,235,226,0.25); cursor:pointer; text-decoration:none; display:inline-block;
+  transition:all var(--t-fast);
+}
+.btn-ghost:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+
+/* Scroll indicator */
+.scroll-cue {
+  position:absolute; bottom:38px; left:50%; transform:translateX(-50%);
+  z-index:4; display:flex; flex-direction:column; align-items:center; gap:10px;
+  opacity:0; animation:fadeUp 1s ease forwards 2s;
+}
+.scroll-cue span { font-size:0.52rem; letter-spacing:0.5em; color:rgba(201,169,110,0.5); text-transform:uppercase; }
+.scroll-line { width:1px; height:52px; background:linear-gradient(to bottom,var(--gold),transparent); animation:scrl 2.2s ease-in-out infinite; }
+@keyframes scrl {
+  0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top}
+  51%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom}
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+
+/* ══════════════════════════════
+   MARQUEE BAND
+══════════════════════════════ */
+.marquee-band {
+  padding:0; overflow:hidden;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:rgba(201,169,110,0.025);
+}
+.marquee-track { display:flex; animation:marquee 28s linear infinite; white-space:nowrap; }
+.marquee-item {
+  display:inline-flex; align-items:center; gap:28px;
+  padding:20px 44px; flex-shrink:0;
+  font-size:0.58rem; letter-spacing:0.4em; text-transform:uppercase;
+  color:rgba(201,169,110,0.45);
+}
+.marquee-item .dot { width:3px; height:3px; background:var(--gold); border-radius:50%; opacity:.5; }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ══════════════════════════════
+   SECTIONS — BASE
+══════════════════════════════ */
+section { padding:120px 60px; }
+.sec-label {
+  font-size:0.54rem; letter-spacing:0.5em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:18px; display:block;
+}
+.sec-title {
+  font-family:'Cormorant Garamond',serif;
+  font-weight:300; font-size:clamp(2rem,4vw,3.4rem);
+  line-height:1.2; color:var(--white); margin-bottom:20px;
+}
+.sec-title em { font-style:italic; color:var(--gold); }
+.sec-line { width:52px; height:1px; background:var(--gold); margin-bottom:64px; }
+
+/* REVEAL on scroll */
+.reveal { opacity:0; transform:translateY(36px); transition:opacity .85s ease, transform .85s ease; }
+.reveal.vis { opacity:1; transform:translateY(0); }
+
+/* ══════════════════════════════
+   SERVICES
+══════════════════════════════ */
+.services-section { background:var(--charcoal); }
+.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:60px; }
+
+.srv-card {
+  background:var(--dark); padding:52px 42px;
+  position:relative; overflow:hidden; cursor:pointer;
+  transition:all var(--t-smooth);
+  border:1px solid rgba(201,169,110,0.04);
+  /* Warm black bg + subtle top accent = depth and invitation */
+}
+.srv-card::before {
+  content:''; position:absolute; top:0; left:0; right:0;
+  height:2px; background:linear-gradient(to right,var(--gold),transparent);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .5s ease;
+}
+.srv-card:hover { background:#221f1c; transform:translateY(-5px); box-shadow:0 20px 60px rgba(0,0,0,0.5); }
+.srv-card:hover::before { transform:scaleX(1); }
+.srv-card:hover .srv-arrow { transform:translate(5px,-5px); opacity:1; }
+.srv-num {
+  position:absolute; top:22px; right:28px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.5rem; letter-spacing:0.2em;
+  color:rgba(201,169,110,0.2);
+}
+.srv-icon { font-size:1.7rem; margin-bottom:28px; display:block; }
+.srv-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.38rem; font-weight:400;
+  color:var(--white); margin-bottom:14px; line-height:1.3;
+}
+.srv-desc { font-size:0.71rem; color:var(--text-muted); line-height:1.85; margin-bottom:28px; }
+.srv-tags { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:28px; }
+.srv-tag {
+  font-size:0.52rem; letter-spacing:0.14em; color:var(--gold-muted);
+  border:1px solid rgba(201,169,110,0.18); padding:4px 11px; text-transform:uppercase;
+}
+.srv-arrow {
+  font-size:0.62rem; letter-spacing:0.2em; color:var(--gold);
+  text-transform:uppercase; opacity:0.5;
+  transition:all var(--t-fast); display:inline-block;
+}
+
+/* ══════════════════════════════
+   PORTFOLIO
+══════════════════════════════ */
+
+
+
+.portfolio-section { background:var(--black); }
+.port-tabs {
+  display:flex; gap:0; margin-bottom:56px;
+  border-bottom:1px solid var(--border);
+  overflow-x:auto; scrollbar-width:none;
+}
+.port-tabs::-webkit-scrollbar{display:none}
+.port-tab {
+  padding:14px 26px; font-size:0.85rem; letter-spacing:0.22em;
+  text-transform:uppercase; color:var(--text-muted);
+  cursor:pointer; white-space:nowrap;
+  border:none; border-bottom:2px solid transparent;
+  background:none; margin-bottom:-1px;
+  transition:all var(--t-fast); font-family:'Montserrat',sans-serif;
+}
+.port-tab:hover { color:var(--cream); }
+.port-tab.active { color:var(--gold); border-bottom-color:var(--gold); }
+
+.port-panel { display:none; }
+.port-panel.active { display:block; }
+.port-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+.port-item { position:relative; aspect-ratio:16/10; overflow:hidden; cursor:pointer; }
+.port-item.wide { grid-column:span 2; }
+.port-bg {
+  width:100%; height:100%;
+  display:flex; align-items:center; justify-content:center;
+  transition:transform .75s cubic-bezier(0.25,0.46,0.45,0.94);
+  position:relative;
+}
+.port-bg .lbl {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic; font-size:2rem;
+  color:rgba(255,255,255,0.07); letter-spacing:0.05em;
+  text-align:center; padding:20px;
+  pointer-events:none;
+}
+.port-item:hover .port-bg { transform:scale(1.07); }
+.port-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top,rgba(10,9,8,0.92) 0%,rgba(10,9,8,0.2) 50%,transparent 100%);
+  opacity:0; transition:opacity var(--t-smooth);
+  display:flex; align-items:flex-end; padding:26px;
+}
+.port-item:hover .port-overlay { opacity:1; }
+.port-info h4 { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--white); margin-bottom:5px; }
+.port-info p { font-size:0.58rem; letter-spacing:0.2em; color:var(--gold); text-transform:uppercase; }
+.play-btn {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%) scale(0.75);
+  width:54px; height:54px;
+  border:1px solid rgba(255,255,255,0.55); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; transition:all .4s var(--t-smooth);
+}
+.play-btn::after {
+  content:''; width:0; height:0;
+  border-style:solid; border-width:8px 0 8px 14px;
+  border-color:transparent transparent transparent white;
+  margin-left:3px;
+}
+.port-item:hover .play-btn { opacity:1; transform:translate(-50%,-50%) scale(1); }
+
+/* portfolio color themes */
+.bg-wed  { background:linear-gradient(135deg,#180e0e,#2a1414,#0d0808); }
+.bg-re   { background:linear-gradient(135deg,#080e18,#0e1830,#040810); }
+.bg-cafe { background:linear-gradient(135deg,#181006,#2c1e0e,#0e0a04); }
+.bg-htl  { background:linear-gradient(135deg,#10100c,#1c1c12,#08080a); }
+.bg-evt  { background:linear-gradient(135deg,#100818,#1e1030,#060410); }
+.bg-prd  { background:linear-gradient(135deg,#0a0a0a,#181818,#060606); }
+.bg-flm  { background:linear-gradient(135deg,#060a12,#0a1424,#020408); }
+
+
+
+/* ══════════════════════════════
+   HOW WE WORK (PROCESS)
+══════════════════════════════ */
+.process-section {
+  background: var(--black);
+  padding: 120px 60px;
+  text-align: center;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+}
+
+.process-card {
+  background: var(--dark);
+  padding: 50px 30px;
+  border: 1px solid rgba(201,169,110,0.05);
+  position: relative;
+  transition: all var(--t-smooth);
+}
+
+.process-card:hover {
+  background: #221f1c;
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.process-num {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  color: rgba(201,169,110,0.08);
+}
+
+.process-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.process-desc {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.9;
+}
+
+@media(max-width:768px){
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* ══════════════════════════════
+   ABOUT
+══════════════════════════════ */
+.about-wrap {
+  background:var(--charcoal);
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:90px; align-items:center;
+  padding:130px 60px;
+}
+.about-visual { position:relative; }
+.about-portrait {
+  width:100%; aspect-ratio:4/5;
+  background:linear-gradient(145deg,#1a1206,#261a0a,#0e0e0e);
+  position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.about-portrait::before {
+  content:'PJ'; font-family:'Cormorant Garamond',serif;
+  font-style:italic; font-size:8rem; font-weight:300;
+  color:rgba(201,169,110,0.06); letter-spacing:-0.05em;
+}
+.about-frame-accent {
+  position:absolute; bottom:-28px; right:-28px;
+  width:160px; height:200px;
+  border:1px solid rgba(201,169,110,0.25);
+  pointer-events:none;
+}
+.about-stats {
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:18px; margin-top:52px;
+}
+.stat-box {
+  padding:22px 18px;
+  border:1px solid var(--border);
+  background:rgba(201,169,110,0.02);
+  transition:all var(--t-fast);
+}
+.stat-box:hover { border-color:rgba(201,169,110,0.3); background:rgba(201,169,110,0.04); }
+.stat-n {
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.6rem; font-weight:300;
+  color:var(--gold); line-height:1; margin-bottom:6px;
+}
+.stat-l { font-size:0.58rem; letter-spacing:0.18em; color:var(--text-muted); text-transform:uppercase; }
+
+.about-text p { font-size:0.78rem; line-height:2; color:var(--cream-dim); margin-bottom:22px; }
+.about-quote {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem; font-style:italic; color:var(--gold);
+  border-left:2px solid var(--gold); padding-left:26px;
+  margin:44px 0; line-height:1.65;
+}
+.about-sig {
+  font-family:'Dancing Script', cursive;
+  font-size:1.7rem; color:rgba(201,169,110,0.55);
+  margin-top:36px;
+}
+.about-sig span {
+  display:block; font-family:'Montserrat',sans-serif;
+  font-style:normal; font-size:0.58rem;
+  letter-spacing:0.3em; color:var(--text-muted);
+  text-transform:uppercase; margin-top:4px;
+}
+
+/* ══════════════════════════════
+   WHY US
+══════════════════════════════ */
+.why-section { background:var(--black); text-align:center; }
+.why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:72px; }
+.why-card {
+  padding:56px 40px;
+  border:1px solid rgba(201,169,110,0.05);
+  position:relative; overflow:hidden;
+  transition:all var(--t-smooth);
+}
+.why-card::after {
+  content:''; position:absolute; top:0; left:50%;
+  transform:translateX(-50%);
+  width:1px; height:0; background:var(--gold);
+  transition:height .5s ease;
+}
+.why-card:hover::after { height:36px; }
+.why-card:hover { background:rgba(201,169,110,0.025); }
+.why-bg-num {
+  position:absolute; top:16px; right:24px;
+  font-family:'Cormorant Garamond',serif; font-size:4.5rem; font-weight:300;
+  color:rgba(201,169,110,0.06); line-height:1;
+}
+.why-icon { font-size:1.7rem; display:block; margin-bottom:24px; }
+.why-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.28rem; color:var(--white); margin-bottom:14px;
+}
+.why-desc { font-size:0.7rem; color:var(--text-muted); line-height:1.9; }
+
+/* ══════════════════════════════
+   SATISFACTION BAND
+══════════════════════════════ */
+.satisfaction-section {
+  background:linear-gradient(135deg,#0d0a04,#110f07,#0a0908);
+  padding:130px 60px; text-align:center; position:relative; overflow:hidden;
+}
+.satisfaction-section::before {
+  content:''; position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:650px; height:650px;
+  background:radial-gradient(ellipse,rgba(201,169,110,0.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.sat-big {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.7rem,3.5vw,3rem);
+  font-weight:300; font-style:italic;
+  color:var(--white); max-width:780px;
+  margin:0 auto 36px; line-height:1.45;
+}
+.sat-sub {
+  font-size:0.73rem; letter-spacing:0.08em;
+  color:var(--cream-dim); max-width:580px;
+  margin:0 auto 56px; line-height:1.95;
+}
+
+/* ══════════════════════════════
+   FEEDBACK SECTION
+══════════════════════════════ */
+.feedback-section { background:var(--charcoal); padding:120px 60px; }
+.feedback-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:64px; }
+
+/* Review card */
+.review-card {
+  background:var(--dark); padding:36px 32px;
+  border:1px solid var(--border);
+  position:relative; overflow:hidden;
+  transition:all var(--t-fast);
+  opacity:0; transform:translateY(20px);
+  animation:none;
+}
+.review-card.show {
+  animation:cardIn .5s ease forwards;
+}
+@keyframes cardIn {
+  to{opacity:1;transform:translateY(0)}
+}
+.review-card:hover { border-color:rgba(201,169,110,0.22); background:#1f1d1a; }
+.review-stars { color:var(--gold); font-size:0.85rem; letter-spacing:3px; margin-bottom:18px; }
+.review-text {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic; font-size:1.08rem;
+  color:var(--cream-dim); line-height:1.7; margin-bottom:24px;
+}
+.review-author { display:flex; align-items:center; gap:14px; }
+.review-avatar {
+  width:40px; height:40px; border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-muted),var(--dark));
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.9rem; font-weight:500; color:var(--black);
+  font-family:'Cormorant Garamond',serif;
+  flex-shrink:0;
+}
+.review-name { font-size:0.72rem; color:var(--cream); font-weight:400; margin-bottom:3px; }
+.review-proj { font-size:0.56rem; letter-spacing:0.2em; color:var(--text-muted); text-transform:uppercase; }
+.review-verified {
+  position:absolute; top:18px; right:20px;
+  font-size:0.5rem; letter-spacing:0.2em;
+  color:var(--teal); text-transform:uppercase;
+  display:flex; align-items:center; gap:5px;
+}
+.review-verified::before { content:'✓'; font-size:0.6rem; }
+
+/* Empty state */
+.reviews-empty {
+  grid-column:1/-1;
+  text-align:center;
+  padding:60px 0;
+
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2rem; /* 🔥 Increased */
+
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  opacity: 0.9;
+
+  display: block;
+}
+
+/* FEEDBACK FORM */
+.feedback-form-wrap {
+  max-width:680px; margin:72px auto 0;
+  background:var(--dark); padding:56px 52px;
+  border:1px solid var(--border);
+  position:relative;
+}
+.feedback-form-wrap::before {
+  content:'Share Your Experience';
+  position:absolute; top:-1px; left:52px;
+  background:var(--charcoal);
+  padding:0 16px;
+  font-size:0.54rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+  transform:translateY(-50%);
+}
+.fb-form { display:flex; flex-direction:column; gap:20px; }
+.fb-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.fb-label { font-size:0.54rem; letter-spacing:0.28em; color:var(--text-muted); text-transform:uppercase; display:block; margin-bottom:7px; }
+.fb-input, .fb-select, .fb-textarea {
+  background:rgba(255,255,255,0.03); border:1px solid rgba(201,169,110,0.1);
+  padding:14px 18px; color:var(--cream);
+  font-family:'Montserrat',sans-serif; font-size:0.78rem; font-weight:300;
+  outline:none; transition:border-color var(--t-fast); width:100%;
+}
+.fb-input:focus,.fb-select:focus,.fb-textarea:focus { border-color:rgba(201,169,110,0.38); }
+.fb-select { cursor:pointer; -webkit-appearance:none; }
+.fb-select option { background:var(--dark); color:var(--cream); }
+.fb-textarea { resize:vertical; min-height:110px; }
+
+/* Star rating input */
+.star-rating { display:flex; gap:8px; flex-direction:row-reverse; justify-content:flex-end; }
+.star-rating input { display:none; }
+.star-rating label {
+  font-size:1.4rem; cursor:pointer;
+  color:rgba(201,169,110,0.2);
+  transition:color var(--t-fast);
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input:checked ~ label { color:var(--gold); }
+
+.fb-submit {
+  background:var(--gold); color:var(--black);
+  padding:17px 40px; border:none; cursor:pointer;
+  font-family:'Montserrat',sans-serif; font-size:0.65rem;
+  letter-spacing:0.3em; text-transform:uppercase; font-weight:500;
+  transition:all var(--t-fast); margin-top:8px;
+  position:relative; overflow:hidden;
+}
+.fb-submit:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 12px 36px rgba(201,169,110,0.3); }
+.fb-success {
+  display:none; text-align:center;
+  padding:28px; border:1px solid rgba(106,191,138,0.25);
+  background:rgba(106,191,138,0.05); color:var(--success);
+}
+.fb-success .check { font-size:2rem; display:block; margin-bottom:10px; }
+.fb-success p { font-size:0.75rem; letter-spacing:0.1em; color:var(--cream-dim); }
+
+/* Trust note */
+.fb-trust-note {
+  display:flex; align-items:center; gap:8px; margin-top:16px;
+  font-size:0.58rem; color:var(--text-muted); letter-spacing:0.05em;
+}
+.fb-trust-note::before { content:'🔒'; font-size:0.65rem; }
+
+/* ══════════════════════════════
+   CONTACT
+══════════════════════════════ */
+.contact-section {
+  background:var(--black);
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:90px; padding:130px 60px;
+}
+.contact-item {
+  display:flex; align-items:flex-start; gap:18px;
+  margin-bottom:36px; cursor:pointer;
+  transition:all var(--t-fast); text-decoration:none;
+}
+.contact-item:hover .contact-icon { background:var(--gold); color:var(--black); }
+.contact-item:hover .contact-label { color:var(--gold); }
+.contact-icon {
+  width:46px; height:46px;
+  border:1px solid rgba(201,169,110,0.28);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.05rem; flex-shrink:0;
+  transition:all var(--t-fast); color:var(--gold);
+}
+.contact-label { font-size:0.56rem; letter-spacing:0.22em; color:var(--text-muted); text-transform:uppercase; margin-bottom:5px; transition:color var(--t-fast); }
+.contact-val { font-size:0.83rem; color:var(--cream); line-height:1.5; }
+
+/* contact form */
+.c-form { display:flex; flex-direction:column; gap:18px; }
+.c-label { font-size:0.53rem; letter-spacing:0.28em; color:var(--text-muted); text-transform:uppercase; display:block; margin-bottom:7px; }
+.c-input,.c-select,.c-textarea {
+  background:rgba(255,255,255,0.028); border:1px solid rgba(201,169,110,0.1);
+  padding:15px 18px; color:var(--cream);
+  font-family:'Montserrat',sans-serif; font-size:0.78rem; font-weight:300;
+  outline:none; transition:border-color var(--t-fast); width:100%;
+}
+.c-input:focus,.c-select:focus,.c-textarea:focus { border-color:rgba(201,169,110,0.35); }
+.c-select { cursor:pointer; -webkit-appearance:none; }
+.c-select option { background:var(--dark); color:var(--cream); }
+.c-textarea { resize:vertical; min-height:116px; }
+.c-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer {
+  background:var(--charcoal);
+  padding:80px 60px 40px;
+  border-top:1px solid var(--border);
+}
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:72px; margin-bottom:56px; }
+.footer-brand-name {
+  font-family:'Dancing Script', cursive;
+  font-size:1.6rem; color:var(--white);
+  margin-bottom:8px; line-height:1;
+}
+.footer-brand-name .at { color:var(--gold); }
+.footer-tagline-small { font-size:0.68rem; color:var(--text-dim); line-height:1.85; max-width:290px; margin-bottom:6px; }
+.footer-hash { font-size:0.56rem; letter-spacing:0.12em; color:rgba(201,169,110,0.3); margin-bottom:28px; }
+.social-row { display:flex; gap:12px; }
+.social-btn {
+  width:38px; height:38px;
+  border:1px solid rgba(255,255,255,0.08);
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none; font-size:0.7rem;
+  color:var(--text-dim); transition:all var(--t-fast);
+}
+.social-btn:hover { border-color:var(--gold); color:var(--gold); background:rgba(201,169,110,0.06); }
+.f-col-title { font-size:0.52rem; letter-spacing:0.4em; text-transform:uppercase; color:var(--gold); margin-bottom:22px; display:block; }
+.f-links { display:flex; flex-direction:column; gap:12px; }
+.f-links a { font-size:0.7rem; color:var(--text-dim); text-decoration:none; transition:color var(--t-fast); }
+.f-links a:hover { color:var(--cream); }
+.footer-bottom {
+  display:flex; justify-content:space-between; align-items:center;
+  padding-top:36px; border-top:1px solid rgba(255,255,255,0.04);
+  flex-wrap:wrap; gap:14px;
+}
+.f-copy { font-size:0.58rem; color:var(--text-dim); letter-spacing:0.08em; }
+.f-location { font-size:0.58rem; color:var(--text-dim); }
+.f-location span { color:var(--gold); }
+
+/* ══════════════════════════════
+   MOBILE
+══════════════════════════════ */
+@media(max-width:1100px) {
+  section { padding:90px 40px; }
+  nav,nav.scrolled { padding-left:40px; padding-right:40px; }
+  .services-grid { grid-template-columns:repeat(2,1fr); }
+  .why-grid { grid-template-columns:repeat(2,1fr); }
+  .about-wrap { grid-template-columns:1fr; gap:56px; padding:90px 40px; }
+  .contact-section { grid-template-columns:1fr; gap:56px; padding:90px 40px; }
+  .footer-grid { grid-template-columns:1fr 1fr; gap:40px; }
+  .feedback-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:768px) {
+  section { padding:80px 24px; }
+  nav,nav.scrolled { padding:18px 24px; }
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+  .hero-ctas { flex-direction:column; align-items:center; }
+  .services-grid,.why-grid,.feedback-grid { grid-template-columns:1fr; }
+  .port-grid { grid-template-columns:1fr; }
+  .port-item.wide { grid-column:span 1; }
+  .footer-grid { grid-template-columns:1fr; gap:36px; }
+  .footer-bottom { flex-direction:column; text-align:center; }
+  .c-row,.fb-row { grid-template-columns:1fr; }
+  .feedback-form-wrap { padding:44px 28px; margin-top:56px; }
+  .sat-big { font-size:1.5rem; }
+  footer { padding:60px 24px 30px; }
+  .about-stats { grid-template-columns:repeat(2,1fr); }
+}
+
+/* ── Notification toast ── */
+#toast {
+  position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(100px);
+  background:var(--dark); border:1px solid var(--border);
+  padding:16px 32px; border-radius:2px;
+  font-size:0.7rem; letter-spacing:0.1em; color:var(--cream);
+  z-index:5000; transition:transform .4s var(--t-bounce);
+  white-space:nowrap;
+}
+#toast.show { transform:translateX(-50%) translateY(0); }
+#toast.gold { border-color:rgba(201,169,110,0.4); }
+#toast.green { border-color:rgba(106,191,138,0.4); color:var(--success); }
+
+
+/* CLEAN WEDDING GRID (NO CONFLICT) */
+#wedding-section, #tab-weddings {
+}
+
+.wedding-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 233px;
+  gap: 16px;
+}
+
+.wedding-grid .hero {
+  grid-row: span 3;
+}
+
+.wedding-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* 🔥 IMPORTANT */
+  display: block;
+  border-radius: 8px;
+}
+.wedding-grid img {
+  cursor: pointer;
+}
+
+/* FULLSCREEN IMAGE VIEWER */
+#imageViewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#imageViewer img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* flag emoji*/
+.f-location span {
+  color: var(--gold);
+}
+
+/* animation scale on hover */
+img:hover {
+  transform: scale(1.05);
+
+/*Real Estate video */
+#tab-realestate .port-item {
+  aspect-ratio: 9/16;   /* 🔥 vertical reels */
+}
+
+#tab-realestate .port-item:first-child {
+  grid-row: span 2;
+}
+
+
+/* cafe & restraunt video photo */
+/* wrapper controls size */
+#tab-cafes .cafe-wrap {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* grid */
+#tab-cafes .cafe-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* box (no conflict with .port-item now) */
+#tab-cafes .cafe-box {
+  width: 100%;
+  height: 200px;   /* 🔥 FIXED SIZE */
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* image */
+#tab-cafes .cafe-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+/* hover */
+#tab-cafes .cafe-box:hover img {
+  transform: scale(1.05);
+}
+
+#tab-cafes {
+  display: flex;
+  justify-content: center;
+}
+
+#tab-cafes .cafe-grid {
+  width: 420px;   /* 🔥 FIXED WIDTH (THIS SOLVES EVERYTHING) */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+#tab-cafes .cafe-box {
+  width: 100%;
+  height: 180px;   /* 🔥 SMALL + CONTROLLED */
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+#tab-cafes .cafe-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* hotels  */
+#tab-hotels .port-item {
+  aspect-ratio: 9/16 !important;
+}
+#tab-hotels .port-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} 
+
+/* event and concert*/
+#tab-events .port-item {
+  aspect-ratio: 9/16 !important;
+}
+
+#tab-events .port-grid {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 600px;
+  margin: auto;
+}
+
+/* product (which i renamed as Edit)  */
+#tab-products .port-item {
+  aspect-ratio: 9/16 !important;   /* vertical reels */
+}
+
+#tab-products .port-grid {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 900px;   /* 🔥 controls size */
+  margin: auto;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="cur"></div>
+<div id="cur2"></div>
+<div id="toast"></div>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#portfolio" onclick="closeMob()">Portfolio</a>
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#feedback" onclick="closeMob()">Reviews</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <span class="logo-script"><span class="at">@</span>theframefantasy  studios</span>
+    <span class="logo-tag">#chotesheherkaladka</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#feedback">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" id="ham" onclick="toggleMob()">
+    <span id="h1"></span><span id="h2"></span><span id="h3"></span>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+ 
+<section class="hero" id="home">
+  <div class="hero-cinematic-bg">
+  <video autoplay muted loop playsinline
+    style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.6;">
+    
+    <source src="Videos/hero.mp4" type="video/mp4">
+    
+  </video>
+</div>
+  <div class="hero-overlay"></div>
+  <div class="grain"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Pune, India · Est. 2026</div>
+    <h1 class="hero-h1">
+      We don’t just create videos —<br>
+      <em>we craft visuals that feel unforgettable</em>
+    </h1>
+    <p class="hero-sub">
+      Trusted by brands  , businesses & couples across India · <b>77+ Projects Delivered</b> 
+    </p>
+    <div class="hero-ctas">
+      <a href="#portfolio" class="btn-gold">Explore Our Work</a>
+      <a href="#contact" class="btn-ghost">Get a Quote</a>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══ MARQUEE ═══ -->
+<div class="marquee-band">
+  <div class="marquee-track">
+    <div class="marquee-item">Wedding Films <span class="dot"></span></div>
+    <div class="marquee-item">Cinematic Storytelling <span class="dot"></span></div>
+    <div class="marquee-item">Brand Visuals <span class="dot"></span></div>
+    <div class="marquee-item">Color Grading <span class="dot"></span></div>
+    <div class="marquee-item">Real Estate Videos <span class="dot"></span></div>
+    <div class="marquee-item">Event Coverage <span class="dot"></span></div>
+    <div class="marquee-item">Product Films <span class="dot"></span></div>
+    <div class="marquee-item">Social Media Content <span class="dot"></span></div>
+    <div class="marquee-item">Wedding Films <span class="dot"></span></div>
+    <div class="marquee-item">Cinematic Storytelling <span class="dot"></span></div>
+    <div class="marquee-item">Brand Visuals <span class="dot"></span></div>
+    <div class="marquee-item">Color Grading <span class="dot"></span></div>
+    <div class="marquee-item">Real Estate Videos <span class="dot"></span></div>
+    <div class="marquee-item">Event Coverage <span class="dot"></span></div>
+    <div class="marquee-item">Product Films <span class="dot"></span></div>
+    <div class="marquee-item">Social Media Content <span class="dot"></span></div>
+  </div>
+</div>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services-section" id="services">
+  <div class="reveal">
+    <span class="sec-label">What We Create</span>
+    <h2 class="sec-title">Premium <em>Services</em></h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="services-grid">
+    <div class="srv-card reveal" onclick="goPort('weddings')">
+      <span class="srv-num">01</span>
+      <span class="srv-icon">🎬</span>
+      <h3 class="srv-title">Wedding Cinematography</h3>
+      <p class="srv-desc">Every love story deserves a cinematic retelling. We capture your day with artistry, emotion, and timeless elegance that you'll cherish forever.</p>
+      <div class="srv-tags"><span class="srv-tag">Cinematic Highlights</span><span class="srv-tag">Pre-Wedding</span><span class="srv-tag">Documentary Film</span><span class="srv-tag">Content planning and Creation</span><span class="srv-tag">Album Design</span><span class="srv-tag">Invite/Welcome Poster Design</span></div>
+      <span class="srv-arrow">View Work →</span>
+    </div>
+    <div class="srv-card reveal" onclick="goPort('cafes')">
+      <span class="srv-num">05</span>
+      <span class="srv-icon">☕</span>
+      <h3 class="srv-title">Hospitality Visuals</h3>
+      <p class="srv-desc">Bespoke content creation and social media management for cafes, restaurants, and hotels that want to attract the right clientele.</p>
+      <div class="srv-tags"><span class="srv-tag">Social Media</span><span class="srv-tag">Brand Films</span><span class="srv-tag">Reels</span><span class="srv-tag">Events</span></div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <span class="srv-arrow">View Work →</span>
+    </div>
+    <div class="srv-card reveal" onclick="goPort('realestate')">
+      <span class="srv-num">03</span>
+      <span class="srv-icon">🏢</span>
+      <h3 class="srv-title">Real Estate Videography</h3>
+      <p class="srv-desc">Architectural walkthroughs that sell aspirations, not just spaces. Drone, gimbal, and cinematic transitions for luxury properties.</p>
+      <div class="srv-tags"><span class="srv-tag">Aerial Drone</span><span class="srv-tag">360&deg; Walkthrough</span><span class="srv-tag">Luxury Photos</span><span class="srv-tag">Video Walkthrough</span></div>
+      <br>
+      <br>
+      <br>
+      <span class="srv-arrow">View Work →</span>
+    </div>
+    <div class="srv-card reveal" onclick="goPort('events')">
+      <span class="srv-num">02</span>
+      <span class="srv-icon">🎤</span>
+      <h3 class="srv-title">Event & Concert Coverage</h3>
+      <p class="srv-desc">Multi-camera live event coverage that captures the energy, emotion, and magic of every performance and gathering with precision.</p>
+      <div class="srv-tags"><span class="srv-tag">Multi-Cam</span><span class="srv-tag">Live Events</span><span class="srv-tag">Corporate</span><span class="srv-tag">Concerts</span></div>
+      <br>
+      <span class="srv-arrow">View Work →</span>
+    </div>
+    <div class="srv-card reveal" onclick="goPort('products')">
+      <span class="srv-num">04</span>
+      <span class="srv-icon">📦</span>
+      <h3 class="srv-title">Reel Editing</h3>
+      <p class="srv-desc">Elevate your Reels with premium visual storytelling. We make reels engaging — not just visible.</p>
+      <div class="srv-tags"><span class="srv-tag">E-commerce</span><span class="srv-tag">Lifestyle</span><span class="srv-tag">Commercial</span><span class="srv-tag">Skin-Care & Beauty</span></div>
+      <span class="srv-arrow">View Work →</span>
+    </div>
+    <div class="srv-card reveal" onclick="goPort('films')">
+      <span class="srv-num">06</span>
+      <span class="srv-icon">🎞</span>
+      <h3 class="srv-title">Post-Production & Editing</h3>
+      <p class="srv-desc">Professional editing, cinematic color grading, and brand storytelling that transforms raw footage into powerful emotional narratives.</p>
+      <div class="srv-tags"><span class="srv-tag">Color Grading</span><span class="srv-tag">Motion Graphics</span><span class="srv-tag">Sound Design</span><span class="srv-tag">Complete Film</span></div>
+      <span class="srv-arrow">View Work →</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PORTFOLIO ═══ -->
+<section class="portfolio-section" id="portfolio">
+  <div class="reveal">
+    <span class="sec-label">Our Work</span>
+    <h2 class="sec-title">Cinematic <em>Portfolio</em></h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="port-tabs" id="portTabs">
+
+  <button class="port-tab active" onclick="switchTab('films',this)">Creative Films</button>
+
+  <button class="port-tab" onclick="switchTab('weddings',this)">Weddings</button>
+
+  <button class="port-tab" onclick="switchTab('realestate',this)">Real Estate</button>
+
+  <button class="port-tab" onclick="switchTab('cafes',this)">Cafes & Restaurants</button>
+
+  <button class="port-tab" onclick="switchTab('hotels',this)">Hotels & Luxury</button>
+
+  <button class="port-tab" onclick="switchTab('events',this)">Events & Concerts</button>
+
+  <button class="port-tab" onclick="switchTab('products',this)">Reel Edit</button>
+
+</div>
+  <div class="port-panel" id="tab-weddings">
+
+  <div class="wedding-grid">
+
+    <!-- HERO -->
+    <div class="hero" onclick="openImage(this)">
+  <img src="Images/wedding/1.jpg">
+</div>
+
+<div onclick="openImage(this)">
+  <img src="Images/wedding/3.jpg">
+</div>
+
+<div onclick="openImage(this)">
+  <img src="Images/wedding/4.jpg">
+</div>
+
+<div onclick="openImage(this)">
+  <img src="Images/wedding/2.jpg">
+</div>
+
+<!--<div onclick="openImage(this)">
+    <img src="Images/wedding/5.jpg">
+  </div>  -->
+
+  </div>
+</div> 
+<div class="port-panel" id="tab-realestate">
+  <div class="port-grid">
+
+    <!-- VIDEO 1 -->
+    <a href="https://youtube.com/shorts/P2UeJYdECj8" target="_blank">
+      <div class="port-item">
+        <div class="port-bg">
+          <img src="https://i.ytimg.com/vi/P2UeJYdECj8/hqdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="play-btn"></div>
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>Luxury Flat Reel</h4>
+            <p>Pune · 2025</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- VIDEO 2 -->
+    <a href="https://youtube.com/shorts/3cigplWhd7g" target="_blank">
+      <div class="port-item">
+        <div class="port-bg">
+          <img src="https://i.ytimg.com/vi/3cigplWhd7g/hqdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="play-btn"></div>
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>Premium Flat Walkthrough</h4>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- VIDEO 3 -->
+    <a href="https://youtube.com/shorts/AhQt6wzjiDM" target="_blank">
+      <div class="port-item">
+        <div class="port-bg">
+          <img src="https://i.ytimg.com/vi/AhQt6wzjiDM/hqdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="play-btn"></div>
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>Coworking Space Marketing ad</h4>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div> 
+ <div class="port-panel" id="tab-cafes">
+  <div class="cafe-wrap">  <!-- 🔥 ADD THIS WRAPPER -->
+
+    <!-- HERO VIDEO -->
+    <a href="https://youtube.com/shorts/HUfs7L_4W9k" target="_blank" class="cafe-item hero">
+      <img src="https://i.ytimg.com/vi/HUfs7L_4W9k/hqdefault.jpg">
+      <div class="play-btn"></div>
+      <div class="port-overlay">
+        <div class="port-info">
+          <h4>Café Brand Reel</h4>
+          <p>Featured Work</p>
+        </div>
+      </div>
+    </a>
+
+    <!-- IMAGE 1 -->
+    <div class="cafe-box" onclick="openImage(this)">
+      <img src="Images1/">
+    </div>
+
+    <!-- IMAGE 2 -->
+    <div class="cafe-box" onclick="openImage(this)">
+      <img src="Images2/">
+    </div>
+
+    <!-- IMAGE 3 -->
+    <div class="cafe-box" onclick="openImage(this)">
+      <img src="Images3/">
+    </div>
+
+  </div>
+</div>
+
+  <div class="port-panel" id="tab-hotels">
+    <div class="port-grid">
+      <a href="https://youtube.com/shorts/psJM-U3fth0" target="_blank">
+  <div class="port-item">
+
+    <div class="port-bg">
+      <img 
+        src="https://i.ytimg.com/vi/psJM-U3fth0/hqdefault.jpg"
+        style="width:100%; height:100%; object-fit:cover;">
+    </div>
+
+    <div class="play-btn"></div>
+
+    <div class="port-overlay">
+      <div class="port-info">
+        <h4>Luxury Hotel Reel</h4>
+        <p>Featured Property</p>
+      </div>
+    </div>
+
+  </div>
+</a>
+    </div>
+  </div>
+
+  <div class="port-panel" id="tab-events">
+  <div class="port-grid">
+
+    <!-- REEL 1 -->
+    <a href="https://youtube.com/shorts/iEhE_9Xt_3Q" target="_blank">
+      <div class="port-item">
+
+        <div class="port-bg">
+          <img src="https://i.ytimg.com/vi/iEhE_9Xt_3Q/hqdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+
+        <div class="play-btn"></div>
+
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>Concert Highlights</h4>
+            <p>Live Event</p>
+          </div>
+        </div>
+
+      </div>
+    </a>
+
+    <!-- REEL 2 -->
+    <a href="https://youtube.com/shorts/m0a9KJvXqwc" target="_blank">
+      <div class="port-item">
+
+        <div class="port-bg">
+          <img src="https://i.ytimg.com/vi/m0a9KJvXqwc/hqdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+
+        <div class="play-btn"></div>
+
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>Event Aftermovie</h4>
+            <p>Stage Energy</p>
+          </div>
+        </div>
+
+      </div>
+    </a>
+    
+     <!-- REEL 2 -->
+    <a href="https://youtube.com/shorts/2YaxjOpw6hs" target="_blank">
+      <div class="port-item">
+
+        <div class="port-bg">
+          <img src="https://i.ytimg.com/vi/2YaxjOpw6hs/hqdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+
+        <div class="play-btn"></div>
+
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>Business Opening</h4>
+            <p>Real estate</p>
+          </div>
+        </div>
+
+      </div>
+    </a>
+ 
+  </div>
+</div>
+
+  <div class="port-panel" id="tab-products">
+  <div class="port-grid">
+
+    <!-- VIDEO 1 -->
+    <a href="https://youtube.com/shorts/5uT5FJRZ5ks" target="_blank">
+      <div class="port-item">
+        <div class="port-bg">
+          <img src="https://i.ytimg.com/vi/5uT5FJRZ5ks/hqdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="play-btn"></div>
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>Taking Head Reel</h4>
+            <p>Info Creator</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- VIDEO 2 -->
+    <a href="https://youtube.com/shorts/ysNrKHvStjg" target="_blank">
+      <div class="port-item">
+        <div class="port-bg">
+          <img src="https://i.ytimg.com/vi/ysNrKHvStjg/hqdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="play-btn"></div>
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>Faceless Reel</h4>
+            <p>shorts</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- VIDEO 3 -->
+    <a href="https://youtube.com/shorts/VIDEO_ID_3" target="_blank">
+      <div class="port-item">
+        <div class="port-bg">
+          <img src="https://i.ytimg.com/vi/VIDEO_ID_3/hqdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="play-btn"></div>
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>Ad Shoot Reel</h4>
+            <p>Campaign</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+  <div class="port-panel active" id="tab-films">
+  <div class="port-grid">
+
+    <!-- 1. BLOOD LUST (PRIORITY) -->
+    <a href="https://youtu.be/tFfws4d7yg8" target="_blank">
+      <div class="port-item wide">
+        <div class="port-bg">
+          <img src="https://img.youtube.com/vi/tFfws4d7yg8/maxresdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="play-btn"></div>
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>BLOOD LUST</h4>
+            <p>Production Highlight</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- 2. RIDE 2024 -->
+    <a href="https://youtu.be/4iUzuSLmE0k" target="_blank">
+      <div class="port-item">
+        <div class="port-bg">
+          <img src="https://img.youtube.com/vi/4iUzuSLmE0k/maxresdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="play-btn"></div>
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>Murtikar Cinematics</h4>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- 3. BCS 2026 -->
+    <a href="https://youtu.be/yc-7xDM93IE" target="_blank">
+      <div class="port-item">
+        <div class="port-bg">
+          <img src="https://img.youtube.com/vi/yc-7xDM93IE/maxresdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="play-btn"></div>
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>BCS 2026</h4>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- 4. END SEM -->
+    <a href="https://youtu.be/XQ9w3-W_s4s" target="_blank">
+      <div class="port-item">
+        <div class="port-bg">
+          <img src="https://img.youtube.com/vi/XQ9w3-W_s4s/maxresdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="play-btn"></div>
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>END SEM</h4>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- 5. Bharatnatyam -->
+    <a href="https://youtu.be/DWB0jbZ1HG4" target="_blank">
+      <div class="port-item">
+        <div class="port-bg">
+          <img src="https://img.youtube.com/vi/DWB0jbZ1HG4/maxresdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="play-btn"></div>
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>Bharatnatyam</h4>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- 6. Corporate -->
+    <a href="https://youtu.be/7DaJdelEiZg" target="_blank">
+      <div class="port-item">
+        <div class="port-bg">
+          <img src="https://img.youtube.com/vi/7DaJdelEiZg/maxresdefault.jpg"
+               style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="play-btn"></div>
+        <div class="port-overlay">
+          <div class="port-info">
+            <h4>Corporate Team Intro</h4>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ HOW WE WORK ═══ -->
+<section class="process-section">
+  <div class="reveal">
+    <span class="sec-label">Our Approach</span>
+    <h2 class="sec-title">The <em>Experience</em> We Deliver</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="process-grid">
+
+    <div class="process-card reveal">
+      <div class="process-num">01</div>
+      <h3 class="process-title">Understanding Your Vision</h3>
+      <p class="process-desc">
+        We begin by understanding your vision, emotions, and expectations to craft a personalized approach for your story.
+      </p>
+    </div>
+
+    <div class="process-card reveal">
+      <div class="process-num">02</div>
+      <h3 class="process-title">Personalized Content Planning</h3>
+      <p class="process-desc">
+        From concepts to shot ideas, we plan every detail accordingly , to ensure your visuals feel cinematic , meaningful and satisfactory
+      </p>
+    </div>
+
+    <div class="process-card reveal">
+      <div class="process-num">03</div>
+      <h3 class="process-title">Guided Shoot Experience</h3>
+      <p class="process-desc">
+        We guide you throughout the shoot so you feel confident, comfortable, and natural in every frame.
+      </p>
+    </div>
+
+    <div class="process-card reveal">
+      <div class="process-num">04</div>
+      <h3 class="process-title">Cinematic Delivery</h3>
+      <p class="process-desc">
+        We craft your story through editing, color grading, and sound — delivering visuals that truly connect.
+      </p>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ ABOUT ═══ -->
+<div class="about-wrap" id="about">
+  <div class="about-visual reveal">
+    <div class="about-portrait">
+  <img src="pranav.jpeg" 
+       style="width:100%; height:100%; object-fit:cover;">
+</div>
+  <!--<div class="about-frame-accent"></div> -->
+    <div class="about-stats">
+      <div class="stat-box">
+        <div class="stat-n">3+</div>
+        <div class="stat-l">Years Experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n">77+</div>
+        <div class="stat-l">Projects Delivered</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n">5+</div>
+        <div class="stat-l">Premium Clients</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n">100%</div>
+        <div class="stat-l">Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-text reveal">
+    <span class="sec-label">The Artist Behind The Lens</span>
+    <h2 class="sec-title">Pranav <em>Jadhao</em></h2>
+    <div class="sec-line"></div>
+    <p>I'm a cinematographer and creative visual artist based in Pune, with over 3 years of experience crafting stories through the lens. Every frame I create carries intention — not just composition.</p>
+    <p>From luxury weddings to brand identity films, my work spans weddings, commercial brands, hospitality, real estate, and live events. What drives me isn't just technical excellence — it's the pursuit of emotional truth in every visual.</p>
+    <div class="about-quote">"Every client deserves visuals that make them feel something - & We make sure every frame lives up to that promise."</div>
+    <p >At <em><b>theframefantasy studios</b></em>, we treat every project like it's our most important one — because for our clients, it is. We bring the same passion to a small café reel as we do to a luxury destination wedding.</p>
+    <div class="about-sig">Pranav Jadhao<span>Cinematographer & Creative Director</span></div>
+  </div>
+</div>
+
+<!-- ═══ WHY US ═══ -->
+<section class="why-section" id="why">
+  <div class="reveal">
+    <span class="sec-label">Our Difference</span>
+    <h2 class="sec-title">Why <em>theframefantasy</em></h2>
+    <div class="sec-line" style="margin:0 auto 64px;"></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal"><span class="why-bg-num">01</span><span class="why-icon">🎥</span><h3 class="why-title">Cinematic Quality, Always</h3><p class="why-desc">Every project is shot, edited, and finished to the standard of a high-end film production — regardless of the budget tier. We don't deliver "good enough."</p></div>
+    <div class="why-card reveal"><span class="why-bg-num">02</span><span class="why-icon">❤️</span><h3 class="why-title">Emotion-First Storytelling</h3><p class="why-desc">Technical skill is our floor, not our ceiling. We craft visuals that move people — your audience should feel something before they think something.</p></div>
+    <div class="why-card reveal"><span class="why-bg-num">03</span><span class="why-icon">✦</span><h3 class="why-title">Detail-Obsessed Execution</h3><p class="why-desc">Light, color, sound, timing — nothing is left to chance. Our post-production is as meticulous as our production, ensuring a polished final result.</p></div>
+    <div class="why-card reveal"><span class="why-bg-num">04</span><span class="why-icon">🌍</span><h3 class="why-title">Available Across India</h3><p class="why-desc">Based in Pune, we travel across India for premium clients. Distance is never a barrier to exceptional work — from Goa to Udaipur and beyond.</p></div>
+    <div class="why-card reveal"><span class="why-bg-num">05</span><span class="why-icon">🎯</span><h3 class="why-title">Full-Service Creative Studio</h3><p class="why-desc">Production, post-production, branding, social media — we're not just videographers. We're your creative partners for every visual need.</p></div>
+    <div class="why-card reveal"><span class="why-bg-num">06</span><span class="why-icon">🏆</span><h3 class="why-title">Client Satisfaction is Sacred</h3><p class="why-desc">We don't close a project until you're proud of what we made together. Revisions, refinements, and relentless communication — always.</p></div>
+  </div>
+</section>
+
+<!-- ═══ SATISFACTION ═══ -->
+<section class="satisfaction-section">
+  <div class="reveal" style="position:relative;z-index:1;">
+    <p style="font-size:0.58rem;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;margin-bottom:36px;">Our Promise</p>
+    <p class="sat-big">"Our goal is simple — to deliver visuals that <em style="color:var(--gold)">exceed expectations.</em>"</p>
+    <p class="sat-sub">We focus on making every client feel proud, satisfied, and emotionally connected to their final content. Because when you love what we made, that's when we know we've done our job.</p>
+    <a href="#contact" class="btn-gold">Start Your Project</a>
+  </div>
+</section>
+
+<!-- ═══ FEEDBACK ═══ -->
+<section class="feedback-section" id="feedback">
+  <div class="reveal">
+    <span class="sec-label">Client Stories</span>
+    <h2 class="sec-title">What Our <em>Clients Say</em></h2>
+    <div class="sec-line"></div>
+    <p style="font-size:0.74rem;color:var(--cream-dim);max-width:520px;line-height:1.9;margin-top:-40px;margin-bottom:0;">Real words from real people we've had the privilege of working with.</p>
+  </div>
+
+  <!-- Dynamic reviews display -->
+  <div class="feedback-grid" id="reviewsGrid">
+    <!-- Seed reviews (approved) -->
+    
+    <div class="reviews-empty" style="display:block;">
+  <p style="font-size:2rem; letter-spacing:0.1em; color:#c9a96e;">
+    Trusted by clients across multiple industries
+  </p>
+</div>
+  <!-- Feedback submission form -->
+  <div class="feedback-form-wrap reveal">
+    <form class="fb-form" id="fbForm" onsubmit="submitFeedback(event)">
+      <div class="fb-row">
+        <div>
+          <label class="fb-label">Your Name *</label>
+          <input type="text" class="fb-input" id="fb-name" placeholder="Full Name" required>
+        </div>
+        <div>
+          <label class="fb-label">Project Type *</label>
+          <select class="fb-select fb-input" id="fb-type" required>
+            <option value="" disabled selected>Select Service</option>
+            <option>Wedding Cinematography</option>
+            <option>Event & Concert Coverage</option>
+            <option>Real Estate Video</option>
+            <option>Product Photography / Video</option>
+            <option>Café / Restaurant Visuals</option>
+            <option>Hotel & Luxury Property</option>
+            <option>Brand Film & Identity</option>
+            <option>Social Media Content</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="fb-label">Your Rating *</label>
+        <div class="star-rating" id="starRating">
+          <input type="radio" id="s5" name="rating" value="5"><label for="s5" title="5 stars">★</label>
+          <input type="radio" id="s4" name="rating" value="4"><label for="s4" title="4 stars">★</label>
+          <input type="radio" id="s3" name="rating" value="3"><label for="s3" title="3 stars">★</label>
+          <input type="radio" id="s2" name="rating" value="2"><label for="s2" title="2 stars">★</label>
+          <input type="radio" id="s1" name="rating" value="1"><label for="s1" title="1 star">★</label>
+        </div>
+      </div>
+      <div>
+        <label class="fb-label">Your Experience *</label>
+        <textarea class="fb-textarea" id="fb-msg" placeholder="Tell others about working with theframefantasy studios..." required minlength="20"></textarea>
+      </div>
+      <div>
+        <label class="fb-label">Location (optional)</label>
+        <input type="text" class="fb-input" id="fb-loc" placeholder="e.g. Pune, Mumbai">
+      </div>
+      <button type="submit" class="fb-submit" id="fbBtn">Share My Experience</button>
+      <div class="fb-trust-note">Your feedback is reviewed before being published on the website.</div>
+    </form>
+    <div class="fb-success" id="fbSuccess">
+      <span class="check">✓</span>
+      <strong style="font-size:1.1rem;font-family:'Cormorant Garamond',serif;color:var(--white);display:block;margin-bottom:8px;">Thank you for sharing!</strong>
+      <p>Your feedback has been received. We'll review it shortly — we truly appreciate your kind words.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="contact-section" id="contact">
+  <div class="reveal">
+    <span class="sec-label">Let's Connect</span>
+    <h2 class="sec-title">Let's Create Something <em>Cinematic</em></h2>
+    <div class="sec-line"></div>
+
+    <a href="https://wa.me/918668359565" target="_blank" class="contact-item">
+      <div class="contact-icon">💬</div>
+      <div><p class="contact-label">WhatsApp</p><p class="contact-val">+91 86683 59565</p></div>
+    </a>
+    <a href="mailto:officialpranavjadhao@gmail.com" class="contact-item">
+      <div class="contact-icon">✉</div>
+      <div><p class="contact-label">Email</p><p class="contact-val">officialpranavjadhao@gmail.com</p></div>
+    </a>
+    <a href="https://www.instagram.com/theframefantasy/" target="_blank" rel="noopener" class="contact-item">
+      <div class="contact-icon">◈</div>
+      <div><p class="contact-label">Instagram</p><p class="contact-val">@theframefantasy</p></div>
+    </a>
+
+    <div style="margin-top:44px;padding:24px 28px;border:1px solid var(--border);background:rgba(201,169,110,0.025);">
+      <p style="font-size:0.55rem;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">Based In</p>
+      <p style="font-size:0.82rem;color:var(--cream);">Pune, Maharashtra · Available Across India</p>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <span class="sec-label">Send a Message</span>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--white);margin-bottom:40px;">Tell Us About<br><em style="color:var(--gold)">Your Project</em></h3>
+    <form class="c-form" onsubmit="submitContact(event)">
+      <div class="c-row">
+        <div><label class="c-label">Your Name</label><input type="text" class="c-input" name="name" placeholder="Full Name" required></div>
+        <div><label class="c-label">Phone Number</label><input type="tel" class="c-input" name="phone" placeholder="+91 XXXXX XXXXX"></div>
+      </div>
+      <div><label class="c-label">Project Type</label>
+        <select class="c-select c-input" name="service">
+          <option value="" disabled selected>Select a Service</option>
+          <option>Wedding Cinematography</option>
+          <option>Event & Concert Coverage</option>
+          <option>Real Estate Video</option>
+          <option>Product Photography / Video</option>
+          <option>Hospitality / Café / Restaurant</option>
+          <option>Hotel & Luxury Property</option>
+          <option>Brand Film & Identity</option>
+          <option>Social Media Content & Management</option>
+          <option>Post-Production & Editing</option>
+          <option>Creative / Short Film</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div><label class="c-label">Your Message</label><textarea class="c-textarea" name="message" placeholder="Tell us about your vision..." required></textarea></div>
+      <button type="submit" class="btn-gold" style="width:100%;padding:19px;font-size:0.66rem;letter-spacing:0.32em;">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name"><span class="at">@</span>theframefantasy</div>
+      <div style="font-family:'Dancing Script',cursive;font-size:0.85rem;color:rgba(201,169,110,0.35);margin-bottom:4px;">studios</div>
+      <div class="footer-hash">#chotesheherkaladka</div>
+      <p class="footer-tagline-small">Luxury cinematic films and creative visual solutions for weddings, brands, and businesses that demand excellence. Est. 2026.</p>
+      <div class="social-row" style="margin-top:28px;">
+        <a href="https://www.instagram.com/theframefantasy/" target="_blank" rel="noopener" class="social-btn" title="Instagram">In</a>
+        <a href="https://wa.me/918668359565" target="_blank" class="social-btn" title="WhatsApp">Wa</a>
+        <a href="mailto:officialpranavjadhao@gmail.com" class="social-btn" title="Email">✉</a>
+      </div>
+    </div>
+    <div>
+      <span class="f-col-title">Services</span>
+      <div class="f-links">
+        <a href="#services" onclick="goPort('weddings')">Wedding Cinematography</a>
+        <a href="#services" onclick="goPort('events')">Event Coverage</a>
+        <a href="#services" onclick="goPort('realestate')">Real Estate Video</a>
+        <a href="#services" onclick="goPort('products')">Product Films</a>
+        <a href="#services" onclick="goPort('cafes')">Hospitality Content</a>
+        <a href="#services" onclick="goPort('films')">Post-Production</a>
+      </div>
+    </div>
+    <div>
+      <span class="f-col-title">Navigate</span>
+      <div class="f-links">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About Pranav</a>
+        <a href="#why">Why Choose Us</a>
+        <a href="#feedback">Client Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="https://wa.me/918668359565" target="_blank">Get a Quote →</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="f-copy">© 2026 theframefantasy studios. All rights reserved.</p>
+    <p class="f-location">
+  Based in <span>Pune, Maharashtra</span> · Available Across 
+  <span>
+    India 
+    <img src="https://flagcdn.com/w20/in.png" style="width:16px; vertical-align:middle;">
+  </span>
+</p>
+  </div>
+</footer>
+ 
+
+<!-- for wedding images-->
+<div id="imageViewer" onclick="closeImage()">
+  <img id="viewerImg">
+</div>
+
+<script>
+
+/* for wedding images */
+function openImage(el) {
+  const img = el.querySelector('img');
+  document.getElementById('viewerImg').src = img.src;
+  document.getElementById('imageViewer').style.display = 'flex';
+}
+
+function closeImage() {
+  document.getElementById('imageViewer').style.display = 'none';
+}
+
+
+/* ─── Custom cursor ─── */
+const c1=document.getElementById('cur'),c2=document.getElementById('cur2');
+let mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  c1.style.left=mx+'px';c1.style.top=my+'px';
+});
+(function loop(){
+  fx+=(mx-fx)*.12;fy+=(my-fy)*.12;
+  c2.style.left=fx+'px';c2.style.top=fy+'px';
+  requestAnimationFrame(loop);
+})();
+document.querySelectorAll('a,button,.srv-card,.port-item,.port-tab,.contact-item,.stat-box,.why-card,.review-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>c2.classList.add('big'));
+  el.addEventListener('mouseleave',()=>c2.classList.remove('big'));
+});
+
+/* ─── Progress bar ─── */
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  const pct=(d.scrollTop/(d.scrollHeight-d.clientHeight))*100;
+  document.getElementById('progress').style.width=pct+'%';
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>55);
+});
+
+/* ─── Mobile menu ─── */
+let mOpen=false;
+function toggleMob(){
+  mOpen=!mOpen;
+  document.getElementById('mobMenu').classList.toggle('open',mOpen);
+  const s=['h1','h2','h3'].map(id=>document.getElementById(id));
+  if(mOpen){s[0].style.transform='rotate(45deg) translate(4px,4px)';s[1].style.opacity='0';s[2].style.transform='rotate(-45deg) translate(4px,-4px)';}
+  else{s.forEach(x=>{x.style.transform='';x.style.opacity='';});}
+}
+function closeMob(){mOpen=false;document.getElementById('mobMenu').classList.remove('open');['h1','h2','h3'].forEach(id=>{const el=document.getElementById(id);el.style.transform='';el.style.opacity='';});}
+
+/* ─── Scroll reveal ─── */
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting) setTimeout(()=>e.target.classList.add('vis'),i*80);
+  });
+},{threshold:.08,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* Stagger service/why card reveals */
+document.querySelectorAll('.srv-card.reveal').forEach((c,i)=>c.style.transitionDelay=(i*.08)+'s');
+document.querySelectorAll('.why-card.reveal').forEach((c,i)=>c.style.transitionDelay=(i*.07)+'s');
+
+/* ─── Portfolio tabs ─── */
+function switchTab(id,btn){
+  document.querySelectorAll('.port-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.port-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  if(btn) btn.classList.add('active');
+}
+const tabOrder={weddings:0,realestate:1,cafes:2,hotels:3,events:4,products:5,films:6};
+function goPort(cat){
+  document.getElementById('portfolio').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>{
+    document.querySelectorAll('.port-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.port-tab').forEach(t=>t.classList.remove('active'));
+    const panel=document.getElementById('tab-'+cat);
+    if(panel) panel.classList.add('active');
+    const tabs=document.querySelectorAll('.port-tab');
+    if(tabs[tabOrder[cat]]) tabs[tabOrder[cat]].classList.add('active');
+  },750);
+}
+
+/* ─── Toast ─── */
+function toast(msg,type='gold'){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.className='show '+type;
+  setTimeout(()=>t.className='',3200);
+}
+
+/* ─── Contact form ─── */
+function submitContact(e){
+  e.preventDefault();
+
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+
+  // Get form data
+  const name = form.querySelector('[name="name"]').value;
+  const phone = form.querySelector('[name="phone"]').value;
+  const service = form.querySelector('[name="service"]').value;
+  const message = form.querySelector('[name="message"]').value;
+
+  // Create WhatsApp message
+  const text = `Hi Pranav,
+Name: ${name}
+Phone: ${phone}
+Service: ${service}
+Message: ${message}`;
+
+  const url = `https://wa.me/918668359565?text=${encodeURIComponent(text)}`;
+
+  // Button animation
+  btn.textContent='Opening WhatsApp…';
+  btn.disabled=true;
+
+  // Open WhatsApp
+  window.open(url, '_blank');
+
+  // Success UI
+  setTimeout(()=>{
+    btn.textContent='Message Sent ✓';
+    btn.style.background='var(--success)';
+
+    setTimeout(()=>{
+      btn.textContent='Send Message';
+      btn.style.background='';
+      btn.disabled=false;
+      form.reset();
+    },3000);
+  },1000);
+}
+/* ─── FEEDBACK SYSTEM VIA FIREBASE ─── */
+
+function submitFeedback(e){
+  e.preventDefault();
+  const name    = document.getElementById('fb-name').value.trim();
+  const type    = document.getElementById('fb-type').value;
+  const message = document.getElementById('fb-msg').value.trim();
+  const loc     = document.getElementById('fb-loc').value.trim();
+  const ratingEl= document.querySelector('input[name="rating"]:checked');
+
+  if(!ratingEl){ toast('Please select a star rating ⭐','gold'); return; }
+  const rating = parseInt(ratingEl.value);
+
+  const btn = document.getElementById('fbBtn');
+  btn.textContent = 'Submitting…'; btn.disabled = true;
+
+  const review = { name, type, message, loc, rating, location:loc, date: new Date().toLocaleDateString('en-IN'), timestamp: Date.now() };
+
+  // Process via global Firebase hook
+  if (window.submitToFirebase) {
+    window.submitToFirebase(review).then(() => {
+      completeSubmission(review);
+    }).catch(err => {
+      console.error(err);
+      toast("Database error. Please try again.", "red");
+      btn.textContent = 'Share My Experience'; btn.disabled = false;
+    });
+  } else {
+    completeSubmission(review);
+  }
+}
+
+function completeSubmission(review) {
+  const { name, type, message, loc, rating } = review;
+  const ratingLabel = ['','Poor','Below Average','Average','Good','Excellent'][rating];
+  const stars = '★'.repeat(rating)+'☆'.repeat(5-rating);
+  const emailSubject = encodeURIComponent(`[theframefantasy] New Client Feedback — ${rating} Stars from ${name}`);
+  const emailBody = encodeURIComponent(
+`New Client Feedback Received
+════════════════════════════
+
+Client Name : ${name}
+Project Type: ${type}
+Location    : ${loc || 'Not specified'}
+Rating      : ${stars} (${rating}/5 — ${ratingLabel})
+Date        : ${review.date}
+
+─── Their Experience ───────────────
+${message}
+
+─── Moderation Status ──────────────
+${rating >= 4 ? '✅ PUBLISHED on website (rating ≥ 4 stars)' : '⛔ NOT shown on website (rating < 4 stars) — for your eyes only'}
+
+─── Action Required ────────────────
+${rating <= 3 ? 'This client gave a lower rating. Consider reaching out to resolve their concern.' : 'No action needed — positive review published.'}
+
+─────────────────────────────────────
+theframefantasy studios
+officialpranavjadhao@gmail.com
+`);
+
+  setTimeout(()=>{
+    window.location.href = `mailto:officialpranavjadhao@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+    document.getElementById('fbForm').style.display='none';
+    document.getElementById('fbSuccess').style.display='block';
+    if(rating >= 4) toast('Thank you! Your review is now live on our site ✓','green');
+    else toast('Thank you for your feedback. We\'ll be in touch soon.','gold');
+  }, 900);
+}
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB88ZX6EUcMmvZEEhangNscvfENs3UJnc0",
+  authDomain: "theframefantasy-studios.firebaseapp.com",
+  projectId: "theframefantasy-studios",
+  storageBucket: "theframefantasy-studios.firebasestorage.app",
+  messagingSenderId: "820237410887",
+  appId: "1:820237410887:web:0783d975e202ac1c6bc762"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+function addReviewCard(r, grid) {
+  const stars = '★'.repeat(r.rating)+'☆'.repeat(5-r.rating);
+  const initials = r.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+  const card = document.createElement('div');
+  card.className='review-card show';
+  card.innerHTML=`
+    <span class="review-verified">Verified Client</span>
+    <div class="review-stars">${stars}</div>
+    <p class="review-text">"${r.message}"</p>
+    <div class="review-author">
+      <div class="review-avatar">${initials}</div>
+      <div>
+        <div class="review-name">${r.name}</div>
+        <div class="review-proj">${r.type}${r.location ? ' · '+r.location : ''}</div>
+      </div>
+    </div>`;
+  grid.appendChild(card);
+}
+
+// Fetch approved reviews live!
+export async function loadReviews() {
+  const grid = document.getElementById('reviewsGrid');
+  
+  const q = query(collection(db, "reviews"), where("status", "==", "approved"));
+  onSnapshot(q, (snapshot) => {
+    // Clear old cards when updating (keep the empty state message though)
+    Array.from(grid.children).forEach(c => {
+      if(c.className.includes('review-card')) c.remove();
+    });
+    snapshot.forEach((doc) => {
+      addReviewCard(doc.data(), grid);
+    });
+  });
+}
+
+// Add our functions to global scope
+window.submitToFirebase = async function(reviewData) {
+  let settings = { auto5: true, auto4: true, notif: true, allow3: false };
+  try {
+    const sQuery = query(collection(db, "settings"));
+    const snapshot = await getDocs(sQuery);
+    if (!snapshot.empty) {
+      settings = snapshot.docs[0].data();
+    }
+  } catch(e) { console.error("Error reading settings", e); }
+  
+  reviewData.status = 'pending';
+  reviewData.autoApproved = false;
+
+  if((reviewData.rating === 5 && settings.auto5) || 
+     (reviewData.rating === 4 && settings.auto4) || 
+     (reviewData.rating === 3 && settings.allow3)) {
+    reviewData.status = 'approved';
+    reviewData.autoApproved = true;
+  }
+  
+  await addDoc(collection(db, 'reviews'), reviewData);
+  
+  await addDoc(collection(db, 'activity'), {
+    text: reviewData.autoApproved 
+      ? `<strong>${reviewData.name}</strong> left a ${reviewData.rating}★ review — auto-approved and published.` 
+      : `<strong>${reviewData.name}</strong> submitted a ${reviewData.rating}★ review — waiting for your approval.`,
+    color: reviewData.autoApproved ? 'green' : 'gold',
+    time: new Date().toLocaleString('en-IN'),
+    timestamp: Date.now()
+  });
+  
+  return reviewData;
+};
+
+loadReviews();
+
+/* ─── Stagger review cards ─── */
+const reviewObs = new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting) setTimeout(()=>e.target.style.animationPlayState='running',i*80);
+  });
+},{threshold:.1});
+document.querySelectorAll('.review-card').forEach(c=>{
+  c.style.animationPlayState='paused';
+  reviewObs.observe(c);
+});
+</script>
+
+<a href="https://wa.me/918668359565?text=Hi%20I%20want%20a%20quote%20for%20your%20services" target="_blank"
+style="
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:12px 18px;
+border-radius:30px;
+font-size:14px;
+font-weight:500;
+display:flex;
+align-items:center;
+gap:8px;
+z-index:9999;
+text-decoration:none;
+box-shadow:0 8px 25px rgba(0,0,0,0.3);
+
+onmouseover="this.style.transform='scale(1.05)'
+onmouseout="this.style.transform='scale(1)'"
+>
+
+  <!-- WhatsApp Icon -->
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
+       style="width:18px;height:18px;">
+
+  chat on WhatsApp
+</a>
+
+
+
+</body>
+</html>
