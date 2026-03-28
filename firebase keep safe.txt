@@ -1,0 +1,19 @@
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyB88ZX6EUcMmvZEEhangNscvfENs3UJnc0",
+    authDomain: "theframefantasy-studios.firebaseapp.com",
+    projectId: "theframefantasy-studios",
+    storageBucket: "theframefantasy-studios.firebasestorage.app",
+    messagingSenderId: "820237410887",
+    appId: "1:820237410887:web:0783d975e202ac1c6bc762"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
