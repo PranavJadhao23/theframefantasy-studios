@@ -1066,6 +1066,157 @@ img:hover {
 }
 
 }
+  /* ==========================
+   WEDDING STORIES
+========================== */
+
+.story-card{
+
+display:grid;
+
+grid-template-columns:1.2fr 1fr;
+
+gap:50px;
+
+align-items:center;
+
+margin-bottom:80px;
+
+}
+
+.story-cover{
+
+height:650px;
+
+overflow:hidden;
+
+border-radius:12px;
+
+}
+
+.story-cover img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+transition:.5s;
+
+}
+
+.story-cover:hover img{
+
+transform:scale(1.04);
+
+}
+
+.story-label{
+
+font-size:.7rem;
+
+letter-spacing:.35em;
+
+color:var(--gold);
+
+text-transform:uppercase;
+
+display:block;
+
+margin-bottom:20px;
+
+}
+
+.story-content h2{
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:3rem;
+
+font-weight:300;
+
+margin-bottom:18px;
+
+}
+
+.story-content p{
+
+font-size:.9rem;
+
+line-height:2;
+
+color:var(--cream-dim);
+
+margin-bottom:40px;
+
+max-width:500px;
+
+}
+
+.story-buttons{
+
+display:flex;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+}
+
+.gallery-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:15px;
+
+}
+
+.gallery-grid img{
+
+width:100%;
+
+height:320px;
+
+object-fit:cover;
+
+border-radius:10px;
+
+cursor:pointer;
+
+transition:.4s;
+
+}
+
+.gallery-grid img:hover{
+
+transform:scale(1.03);
+
+}
+
+@media(max-width:900px){
+
+.story-card{
+
+grid-template-columns:1fr;
+
+}
+
+.story-cover{
+
+height:450px;
+
+}
+
+.gallery-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
 
 </style>
 </head>
@@ -1089,7 +1240,7 @@ img:hover {
 <nav id="nav">
   <a href="#" class="nav-logo">
     <span class="logo-script"><span class="at">@</span>theframefantasy  studios</span>
-    <span class="logo-tag">#chotesheherkaladka</span>
+    <span class="logo-tag">We Craft Stories - not just random Videos</span>
   </a>
   <ul class="nav-links">
     <li><a href="#portfolio">Portfolio</a></li>
@@ -1238,7 +1389,7 @@ img:hover {
 
   <button class="port-tab active" onclick="switchTab('films',this)">Creative Films</button>
 
-  <button class="port-tab" onclick="switchTab('weddings',this)">Weddings</button>
+  <button class="port-tab" onclick="switchTab('weddings',this)">Wedding Stories</button>
 
   <button class="port-tab" onclick="switchTab('realestate',this)">Real Estate</button>
 
@@ -1248,35 +1399,73 @@ img:hover {
 
   <button class="port-tab" onclick="switchTab('events',this)">Events & Concerts</button>
 
-  <button class="port-tab" onclick="switchTab('products',this)">Reel Edit</button>
+  /*<button class="port-tab" onclick="switchTab('products',this)">Reel Edit</button>*/
 
 </div>
   <div class="port-panel" id="tab-weddings">
 
-  <div class="wedding-grid">
+<div class="story-card">
 
-    <!-- HERO -->
-    <div class="hero" onclick="openImage(this)">
-  <img src="Images/wedding/1.jpg">
+    <div class="story-cover">
+
+        <img src="Images/prewedding/cover.jpg">
+
+    </div>
+
+    <div class="story-content">
+
+        <span class="story-label">
+            Featured Love Story
+        </span>
+
+        <h2>
+            Bhupesh × Prajakta
+        </h2>
+
+        <p>
+
+            Shiv Shakti —
+            A Divine Love Story
+
+        </p>
+
+        <div class="story-buttons">
+
+            <a href="YOUR PREWEDDING FILM LINK"
+               target="_blank"
+               class="btn-gold">
+
+               ▶ Watch Film
+
+            </a>
+
+            <button
+            class="btn-ghost"
+            onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
+
+                View Gallery
+
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
 
-<div onclick="openImage(this)">
-  <img src="Images/wedding/3.jpg">
+<div id="gallery" class="gallery-grid">
+
+    <img src="Images/prewedding/1.jpg" onclick="openImage(this)">
+    <img src="Images/prewedding/2.jpg" onclick="openImage(this)">
+    <img src="Images/prewedding/3.jpg" onclick="openImage(this)">
+    <img src="Images/prewedding/4.jpg" onclick="openImage(this)">
+    <img src="Images/prewedding/5.jpg" onclick="openImage(this)">
+    <img src="Images/prewedding/6.jpg" onclick="openImage(this)">
+    <img src="Images/prewedding/7.jpg" onclick="openImage(this)">
+    <img src="Images/prewedding/8.jpg" onclick="openImage(this)">
+
 </div>
 
-<div onclick="openImage(this)">
-  <img src="Images/wedding/4.jpg">
-</div>
-
-<div onclick="openImage(this)">
-  <img src="Images/wedding/2.jpg">
-</div>
-
-<!--<div onclick="openImage(this)">
-    <img src="Images/wedding/5.jpg">
-  </div>  -->
-
-  </div>
 </div> 
 <div class="port-panel" id="tab-realestate">
   <div class="port-grid">
