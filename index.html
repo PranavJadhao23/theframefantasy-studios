@@ -1303,6 +1303,234 @@ grid-template-columns:repeat(2,1fr);
 
 }
 
+/* ==========================================
+   WEDDING STORIES V2
+========================================== */
+
+.wedding-story{
+    max-width:1200px;
+    margin:auto;
+}
+
+.story-header{
+    text-align:center;
+    margin-bottom:80px;
+}
+
+.story-tag{
+    display:inline-block;
+    color:var(--gold);
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    font-size:.75rem;
+    margin-bottom:18px;
+}
+
+.story-header h2{
+    font-size:3.4rem;
+    font-family:'Cormorant Garamond',serif;
+    margin-bottom:18px;
+}
+
+.story-header p{
+    max-width:700px;
+    margin:auto;
+    color:var(--cream-dim);
+    line-height:1.9;
+}
+
+.project-card{
+
+    display:grid;
+
+    grid-template-columns:1.2fr 1fr;
+
+    gap:55px;
+
+    align-items:center;
+
+    margin:90px 0;
+
+}
+
+.project-card:nth-child(even){
+
+    direction:rtl;
+
+}
+
+.project-card:nth-child(even) .project-content{
+
+    direction:ltr;
+
+}
+
+.project-image{
+
+    overflow:hidden;
+
+    border-radius:14px;
+
+}
+
+.project-image img{
+
+    width:100%;
+
+    height:650px;
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.project-image:hover img{
+
+    transform:scale(1.05);
+
+}
+
+.project-type{
+
+    color:var(--gold);
+
+    font-size:.72rem;
+
+    letter-spacing:.35em;
+
+}
+
+.project-content h3{
+
+    font-size:2.5rem;
+
+    margin:18px 0;
+
+    font-family:'Cormorant Garamond',serif;
+
+}
+
+.project-content p{
+
+    color:var(--cream-dim);
+
+    line-height:2;
+
+    margin-bottom:35px;
+
+}
+
+.project-buttons{
+
+    display:flex;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.gallery-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:18px;
+
+    margin-top:30px;
+
+}
+
+.gallery-grid img{
+
+    width:100%;
+
+    aspect-ratio:4/5;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+}
+
+.gallery-grid img:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.coming-card{
+
+    border:1px solid rgba(201,169,110,.15);
+
+    border-radius:14px;
+
+    padding:70px;
+
+    margin-top:80px;
+
+    text-align:center;
+
+}
+
+.coming-card h3{
+
+    font-size:2rem;
+
+    margin-bottom:15px;
+
+}
+
+.coming-card p{
+
+    color:var(--gold);
+
+    letter-spacing:.25em;
+
+    text-transform:uppercase;
+
+}
+
+@media(max-width:900px){
+
+.project-card{
+
+grid-template-columns:1fr;
+
+}
+
+.project-card:nth-child(even){
+
+direction:ltr;
+
+}
+
+.project-image img{
+
+height:450px;
+
+}
+
+.gallery-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.story-header h2{
+
+font-size:2.5rem;
+
+}
+
+}
+  
 </style>
 </head>
 <body>
@@ -1479,66 +1707,150 @@ grid-template-columns:repeat(2,1fr);
 </div>
   <div class="port-panel active" id="tab-weddings">
 
-<div class="story-card">
+<section class="wedding-story">
 
-    <div class="story-cover">
-    <img src="Images/weddingstories/bhupesh-prajakta-cover.webp" alt="Bhupesh & Prajakta">
-</div>
-  
-    <div class="story-content">
+    <div class="story-header">
 
-        <span class="story-label">
-            Featured Pre-Wedding Story
-        </span>
+        <span class="story-tag">Featured Wedding Story</span>
 
-        <h2>
-            Bhupesh & Prajakta
-        </h2>
+        <h2>Bhupesh &amp; Prajakta</h2>
 
         <p>
-
-            Shiv Shakti —
-            A Divine story of Love
-
+            A cinematic journey captured through two unique pre-wedding concepts,
+            each telling a different chapter of their story.
         </p>
 
-        <div class="story-buttons">
+    </div>
 
-            <a href="YOUR PREWEDDING FILM LINK"
-               target="_blank"
-               class="btn-gold">
+    <!-- ===================== -->
+    <!-- PRE-WEDDING 1 -->
+    <!-- ===================== -->
 
-               ▶ Watch Film
+    <div class="project-card">
 
-            </a>
+        <div class="project-image">
 
-            <button
-            class="btn-ghost"
-            onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
+            <img src="Images/weddingstories/the-beginning-cover.webp" alt="The Beginning">
 
-                View Gallery
+        </div>
 
-            </button>
+        <div class="project-content">
+
+            <span class="project-type">PRE-WEDDING I</span>
+
+            <h3>The Beginning</h3>
+
+            <p>
+                A romantic and emotional story celebrating the couple's beautiful journey together.
+            </p>
+
+            <div class="project-buttons">
+
+                <a href="YOUR_FILM_1_LINK"
+                   target="_blank"
+                   class="btn-gold">
+
+                    ▶ Watch Film
+
+                </a>
+
+                <button
+                    class="btn-ghost"
+                    onclick="openGallery('gallery1')">
+
+                    📷 View Gallery
+
+                </button>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+    <!-- Gallery 1 -->
 
-<div id="gallery" class="gallery-grid">
+    <div class="gallery-grid" id="gallery1">
 
-    <img src="Images/weddingstories/1.webp" onclick="openImage(this)">
-    <img src="Images/weddingstories/2.webp" onclick="openImage(this)">
-    <img src="Images/weddingstories/3.webp" onclick="openImage(this)">
-    <img src="Images/weddingstories/4.webp" onclick="openImage(this)">
-    <img src="Images/weddingstories/5.webp" onclick="openImage(this)">
-    <img src="Images/weddingstories/6.webp" onclick="openImage(this)">
-    <img src="Images/weddingstories/7.webp" onclick="openImage(this)">
-    <img src="Images/weddingstories/8.webp" onclick="openImage(this)">
+        <img src="Images/weddingstories/1.webp" onclick="openImage(this)">
+        <img src="Images/weddingstories/2.webp" onclick="openImage(this)">
+        <img src="Images/weddingstories/3.webp" onclick="openImage(this)">
+        <img src="Images/weddingstories/4.webp" onclick="openImage(this)">
 
-</div>
-</div> 
+    </div>
+
+    <!-- ===================== -->
+    <!-- PRE-WEDDING 2 -->
+    <!-- ===================== -->
+
+    <div class="project-card">
+
+        <div class="project-image">
+
+            <img src="Images/weddingstories/bhupesh-prajakta-cover.webp" alt="Shiv Shakti">
+
+        </div>
+
+        <div class="project-content">
+
+            <span class="project-type">PRE-WEDDING II</span>
+
+            <h3>Shiv • Shakti</h3>
+
+            <p>
+                A divine love story inspired by Lord Shiva and Goddess Parvati,
+                blending mythology with cinematic storytelling.
+            </p>
+
+            <div class="project-buttons">
+
+                <a href="https://youtu.be/qhsGXSbwRQY?si=L-3PGt5_Xof3U6Iq"
+                   target="_blank"
+                   class="btn-gold">
+
+                    ▶ Watch Film
+
+                </a>
+
+                <button
+                    class="btn-ghost"
+                    onclick="openGallery('gallery2')">
+
+                    📷 View Gallery
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Gallery 2 -->
+
+    <div class="gallery-grid" id="gallery2">
+
+        <img src="Images/weddingstories/5.webp" onclick="openImage(this)">
+        <img src="Images/weddingstories/6.webp" onclick="openImage(this)">
+        <img src="Images/weddingstories/7.webp" onclick="openImage(this)">
+        <img src="Images/weddingstories/8.webp" onclick="openImage(this)">
+
+    </div>
+
+    <!-- ===================== -->
+    <!-- WEDDING -->
+    <!-- ===================== -->
+
+    <div class="coming-card">
+
+        <h3>Wedding Film</h3>
+
+        <p>Coming Soon</p>
+
+    </div>
+
+</section>
+  </div> 
 <div class="port-panel" id="tab-realestate">
   <div class="port-grid">
 
