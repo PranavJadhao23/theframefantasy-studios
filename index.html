@@ -1545,6 +1545,11 @@ font-size:2.5rem;
 }
 
 }
+
+  #pw1-gallery,
+#pw2-gallery {
+    scroll-margin-top: 100px;
+}
   
 </style>
 </head>
@@ -1769,14 +1774,12 @@ font-size:2.5rem;
 
                 </a>
 
-                <button
-                    class="btn-ghost"
-                    onclick="openGallery('gallery1')">
+                <button class="btn-ghost"
+                onclick="document.getElementById('pw2-gallery').scrollIntoView({behavior:'smooth',block:'start'})">
 
-                    📷 View Gallery
+                📷 View Gallery
 
-                </button>
-
+</button>
             </div>
 
         </div>
@@ -1831,14 +1834,12 @@ font-size:2.5rem;
 
                 </a>
 
-                <button
-                    class="btn-ghost"
-                    onclick="openGallery('gallery2')">
+                <button class="btn-ghost"
+                 onclick="document.getElementById('pw2-gallery').scrollIntoView({behavior:'smooth',block:'start'})">
 
-                    📷 View Gallery
+                 📷 View Gallery
 
-                </button>
-
+              </button>
             </div>
 
         </div>
